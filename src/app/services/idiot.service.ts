@@ -21,4 +21,10 @@ export class IdiotService {
       })
     );
   }
+
+  show(id: number): Observable<Idiot> {
+    return this.http.get(`${this.url}/${id}`).pipe(
+      map(r => new Idiot().fromJson(r))
+    );
+  }
 }

@@ -1,1 +1,91 @@
-<p>idiots-form works!</p>
+<h1>{{ idiot.id ? idiot.name : 'New' }}</h1>
+
+<br>
+
+<form [formGroup]="idiotForm" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="rStarId">rStarId</label>
+        <input type="text" class="form-control" id="rStarId" formControlName="rStarId">
+        <small id="rStarIdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="momJoke">momJoke</label>
+        <select class="form-control" id="momJoke" formControlName="momJoke">
+          <option value="mj_none">mj_none</option>
+          <option value="mj_seldom">mj_seldom</option>
+          <option value="mj_normal">mj_normal</option>
+          <option value="mj_often">mj_often</option>
+          <option value="mj_very_often">mj_very_often</option>
+        </select>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="cheats">cheats</label>
+        <select class="form-control" id="cheats" formControlName="cheats">
+          <option value="cheats_none">cheats_none</option>
+          <option value="cheats_some">cheats_some</option>
+          <option value="cheats_impulse">cheats_impulse</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">comment</label>
+    <textarea class="form-control" id="comment" rows="3" formControlName="comment"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="pazientDiagnos">pazientDiagnos</label>
+    <textarea class="form-control" id="pazientDiagnos" rows="3" formControlName="pazientDiagnos"></textarea>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="agressive" formControlName="agressive">
+    <label class="form-check-label" for="agressive">agressive</label>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="autoKick" formControlName="autoKick">
+    <label class="form-check-label" for="autoKick">autoKick</label>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="warnMe" formControlName="warnMe">
+    <label class="form-check-label" for="warnMe">warnMe</label>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="freezePlayer" formControlName="freezePlayer">
+    <label class="form-check-label" for="freezePlayer">freezePlayer</label>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="blame" formControlName="blame">
+    <label class="form-check-label" for="blame">blame</label>
+  </div>
+
+  <div class="form-group form-check form-check-inline">
+    <input type="checkbox" class="form-check-input" id="explode" formControlName="explode">
+    <label class="form-check-label" for="explode">explode</label>
+  </div>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

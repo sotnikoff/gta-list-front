@@ -27,4 +27,16 @@ export class IdiotService {
       map(r => new Idiot().fromJson(r))
     );
   }
+
+  save(record: Idiot): Observable<Idiot> {
+    const snake = record.toSnakeCaseObject();
+    if (record.id) {
+      return this.http.put(`${this.url}/${record.id}`, { idiot: snake }).pipe(
+        map(r => new Idiot().fromJson(r))
+      );
+    }
+    return this.http.post(this.url, { idiot: snake }).pipe(
+      map(r => new Idiot().fromJson(r))
+    );
+  }
 }

@@ -1,1 +1,7 @@
-<p>idiots-edit works!</p>
+<div *ngIf="loading">
+  <p>
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+  </p>
+</div>
+
+<app-idiots-form [idiot]="idiot" *ngIf="idiot && !loading"></app-idiots-form>

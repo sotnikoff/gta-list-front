@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { IdiotService } from 'src/app/services/idiot.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Idiot } from 'src/app/models/idiot.model';
 
 @Component({
   selector: 'app-idiots-form',
@@ -7,9 +11,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdiotsFormComponent implements OnInit {
 
-  constructor() { }
+  @Input() idiot: Idiot;
+  idiotForm: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+              private idiotService: IdiotService,
+              private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  buildForm(): void {
+    this.idiotForm = this.formBuilder.group({
+      name: [this.idiot.name, Validators.required],
+      momJoke: [this.idiot.momJoke],
+      deathDate: [this.idiot.deathDate],
+      agressive: [this.idiot.agressive],
+      comment: [this.idiot.comment],
+      autoKick: [this.idiot.autoKick],
+      pazientDiagnos: [this.idiot.pazientDiagnos],
+      rStarId: [this.idiot.rStarId, Validators.required],
+      cheats: [this.idiot.cheats],
+      warnMe: [this.idiot.warnMe],
+      freezePlayer: [this.idiot.freezePlayer],
+      blame: [this.idiot.blame],
+      explode: [this.idiot.explode]
+    });
+  }
+
+  save(): void {
+    if (!this.idiotForm.valid) {
+      return;
+    }
+
+    const savedIdiot = new Idiot().fromJson(Object.assign({ id: this.idiot.id }, this.idiotForm.getRawValue()));
+    this.idiotService.save(savedIdiot).subscribe(r => {
+      this.router.navigateByUrl(`/idiots/${r.id}`);
+    });
   }
 
 }

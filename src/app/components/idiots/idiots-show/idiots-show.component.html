@@ -18,25 +18,56 @@
         <td>{{ idiot.rStarId }}</td>
       </tr>
       <tr>
+        <td>momJoke</td>
+        <td>{{ idiot.momJoke }}</td>
+      </tr>
+      
+      <tr>
+        <td>cheats</td>
+        <td>{{ idiot.cheats }}</td>
+      </tr>
+
+      <tr>
         <td>pazientDiagnos</td>
         <td>{{ idiot.pazientDiagnos }}</td>
       </tr>
+
+      <tr>
+        <td>comment</td>
+        <td>{{ idiot.comment }}</td>
+      </tr>
+      
+
+      <tr>
+        <td>deathDateFormatted</td>
+        <td>{{ idiot.deathDateFormatted }}</td>
+      </tr>
+
       <tr>
         <td>agressive</td>
         <td>{{ (idiot.agressive ? 'yes' : 'no') }}</td>
       </tr>
       <tr>
-        <td>momJoke</td>
-        <td>{{ idiot.momJoke }}</td>
+        <td>warnMe</td>
+        <td>{{ (idiot.warnMe ? 'yes' : 'no') }}</td>
       </tr>
       <tr>
-        <td>isCheater</td>
-        <td>{{ idiot.isCheater }}</td>
+        <td>autoKick</td>
+        <td>{{ (idiot.autoKick ? 'yes' : 'no') }}</td>
       </tr>
       <tr>
-        <td>deathDateFormatted</td>
-        <td>{{ idiot.deathDateFormatted }}</td>
+        <td>freezePlayer</td>
+        <td>{{ (idiot.freezePlayer ? 'yes' : 'no') }}</td>
       </tr>
+      <tr>
+        <td>blame</td>
+        <td>{{ (idiot.blame ? 'yes' : 'no') }}</td>
+      </tr>
+      <tr>
+        <td>explode</td>
+        <td>{{ (idiot.explode ? 'yes' : 'no') }}</td>
+      </tr>
+
       <tr>
         <td>createdAtFormatted</td>
         <td>{{ idiot.createdAtFormatted }}</td>
@@ -47,4 +78,8 @@
       </tr>
     </tbody>
   </table>
+
+  <a class="btn btn-primary" role="button" routerLink='/'>
+    Back
+  </a>
 </div>

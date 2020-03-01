@@ -11,7 +11,13 @@ export class Idiot {
   comment: string;
   agressive: boolean;
   momJoke: string;
-  isCheater: boolean;
+  cheats: boolean;
+  autoKick: boolean;
+  imported: boolean;
+  warnMe: boolean;
+  freezePlayer: boolean;
+  blame: boolean;
+  explode: boolean;
   createdAt: string;
   updatedAt: string;
 
@@ -31,14 +37,14 @@ export class Idiot {
   }
 
   get createdAtFormatted(): string {
-    return this.createdAt ? moment(this.createdAt).format('DD.MM.YYYY') : null;
+    return this.createdAt ? moment(this.createdAt).format('DD.MM.YYYY HH:mm:ss') : null;
   }
 
   get updatedAtFormatted(): string {
-    return this.updatedAt ? moment(this.updatedAt).format('DD.MM.YYYY') : null;
+    return this.updatedAt ? moment(this.updatedAt).format('DD.MM.YYYY HH:mm:ss') : null;
   }
 
   get deathDateFormatted(): string {
-    return this.deathDate ? moment(this.deathDate).format('DD.MM.YYYY') : null;
+    return this.deathDate ? moment(this.deathDate).format('DD.MM.YYYY HH:mm:ss') : null;
   }
 }

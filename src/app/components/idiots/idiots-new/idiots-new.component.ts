@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Idiot } from 'src/app/models/idiot.model';
 
 @Component({
   selector: 'app-idiots-new',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdiotsNewComponent implements OnInit {
 
+  idiot: Idiot;
   constructor() { }
 
   ngOnInit() {
+    this.idiot = new Idiot();
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IdiotService } from 'src/app/services/idiot.service';
 import { Idiot } from 'src/app/models/idiot.model';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-idiots-index',
@@ -14,6 +15,7 @@ export class IdiotsIndexComponent implements OnInit {
   loading = false;
 
   constructor(private idiotService: IdiotService,
+              private router: Router,
               private titleService: Title) {
     this.idiots = [];
   }
@@ -32,6 +34,6 @@ export class IdiotsIndexComponent implements OnInit {
   }
 
   openIdiot(row: Idiot): void {
-    console.log(row);
+    this.router.navigateByUrl('/idiots/' + row.id);
   }
 }

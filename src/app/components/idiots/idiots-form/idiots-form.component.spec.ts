@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IdiotFormComponent } from './idiot-form.component';
+import { IdiotsFormComponent } from './idiots-form.component';
 
-describe('IdiotFormComponent', () => {
-  let component: IdiotFormComponent;
-  let fixture: ComponentFixture<IdiotFormComponent>;
+describe('IdiotsFormComponent', () => {
+  let component: IdiotsFormComponent;
+  let fixture: ComponentFixture<IdiotsFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IdiotFormComponent ]
+      declarations: [ IdiotsFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IdiotFormComponent);
+    fixture = TestBed.createComponent(IdiotsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

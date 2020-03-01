@@ -10,10 +10,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IdiotsIndexComponent } from './components/idiots/idiots-index/idiots-index.component';
-import { IdiotShowComponent } from './components/idiots/idiot-show/idiot-show.component';
-import { IdiotNewComponent } from './components/idiots/idiot-new/idiot-new.component';
-import { IdiotEditComponent } from './components/idiots/idiot-edit/idiot-edit.component';
-import { IdiotFormComponent } from './components/idiots/idiot-form/idiot-form.component';
+import { IdiotsFormComponent } from './components/idiots/idiots-form/idiots-form.component';
+import { IdiotsShowComponent } from './components/idiots/idiots-show/idiots-show.component';
+import { IdiotsEditComponent } from './components/idiots/idiots-edit/idiots-edit.component';
+import { IdiotsNewComponent } from './components/idiots/idiots-new/idiots-new.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,10 +23,10 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     IdiotsIndexComponent,
-    IdiotShowComponent,
-    IdiotNewComponent,
-    IdiotEditComponent,
-    IdiotFormComponent
+    IdiotsFormComponent,
+    IdiotsShowComponent,
+    IdiotsEditComponent,
+    IdiotsNewComponent
   ],
   imports: [
     BrowserModule,

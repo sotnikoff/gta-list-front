@@ -1,1 +1,50 @@
-<p>idiots-show works!</p>
+<div *ngIf="!idiot">
+  <p>
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+  </p>
+</div>
+
+<div *ngIf="idiot">
+  <h1>{{ idiot.name }}</h1>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>{{ idiot.name }}</td>
+      </tr>
+      <tr>
+        <td>rStarId</td>
+        <td>{{ idiot.rStarId }}</td>
+      </tr>
+      <tr>
+        <td>pazientDiagnos</td>
+        <td>{{ idiot.pazientDiagnos }}</td>
+      </tr>
+      <tr>
+        <td>agressive</td>
+        <td>{{ (idiot.agressive ? 'yes' : 'no') }}</td>
+      </tr>
+      <tr>
+        <td>momJoke</td>
+        <td>{{ idiot.momJoke }}</td>
+      </tr>
+      <tr>
+        <td>isCheater</td>
+        <td>{{ idiot.isCheater }}</td>
+      </tr>
+      <tr>
+        <td>deathDateFormatted</td>
+        <td>{{ idiot.deathDateFormatted }}</td>
+      </tr>
+      <tr>
+        <td>createdAtFormatted</td>
+        <td>{{ idiot.createdAtFormatted }}</td>
+      </tr>
+      <tr>
+        <td>updatedAtFormatted</td>
+        <td>{{ idiot.updatedAtFormatted }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

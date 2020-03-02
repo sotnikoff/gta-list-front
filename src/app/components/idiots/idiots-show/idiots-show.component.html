@@ -85,4 +85,12 @@
   <a class="btn btn-secondary" role="button" [routerLink]="'/idiots/' + idiot.id + '/edit'" *ngIf="!idiot.discardedAt">
     Edit
   </a>
+
+  <button class="btn btn-danger" role="button" (click)="destroy()" *ngIf="!idiot.discardedAt">
+    Delete
+  </button>
+
+  <button class="btn btn-primary" role="button" (click)="restore()" *ngIf="idiot.discardedAt">
+    Restore
+  </button>
 </div>

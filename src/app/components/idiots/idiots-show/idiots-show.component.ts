@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IdiotService } from 'src/app/services/idiot.service';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Idiot } from 'src/app/models/idiot.model';
@@ -17,6 +17,7 @@ export class IdiotsShowComponent implements OnInit, OnDestroy {
   destroySubject$$: Subject<any>;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private titleService: Title,
               private service: IdiotService) {
                 this.destroySubject$$ = new Subject<any>();
@@ -29,6 +30,18 @@ export class IdiotsShowComponent implements OnInit, OnDestroy {
     ).subscribe(r => {
       this.idiot = r;
       this.titleService.setTitle(this.idiot.name);
+    });
+  }
+
+  destroy(): void {
+    this.service.delete(this.idiot.id).subscribe(r => {
+      this.router.navigateByUrl('/');
+    });
+  }
+
+  restore(): void {
+    this.service.restore(this.idiot.id).subscribe(r => {
+      this.router.navigateByUrl('/');
     });
   }
 

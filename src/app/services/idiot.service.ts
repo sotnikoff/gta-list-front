@@ -28,14 +28,22 @@ export class IdiotService {
     );
   }
 
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+  restore(id: number): Observable<any> {
+    return this.http.get(`${this.url}/${id}/restore`);
+  }
+
   save(record: Idiot): Observable<Idiot> {
-    const snake = record.toSnakeCaseObject();
+    const idiot = record.toSnakeCaseObject();
     if (record.id) {
-      return this.http.put(`${this.url}/${record.id}`, { idiot: snake }).pipe(
+      return this.http.put(`${this.url}/${record.id}`, { idiot }).pipe(
         map(r => new Idiot().fromJson(r))
       );
     }
-    return this.http.post(this.url, { idiot: snake }).pipe(
+    return this.http.post(this.url, { idiot }).pipe(
       map(r => new Idiot().fromJson(r))
     );
   }

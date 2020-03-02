@@ -7,7 +7,7 @@
 <div *ngIf="idiot">
   <h1>{{ idiot.name }}</h1>
 
-  <table class="table">
+  <table class="table" [ngClass]="{'text-muted': idiot.discardedAt}">
     <tbody>
       <tr>
         <td>name</td>
@@ -36,7 +36,6 @@
         <td>comment</td>
         <td>{{ idiot.comment }}</td>
       </tr>
-      
 
       <tr>
         <td>deathDateFormatted</td>
@@ -81,5 +80,9 @@
 
   <a class="btn btn-primary" role="button" routerLink='/'>
     Back
+  </a>
+
+  <a class="btn btn-secondary" role="button" [routerLink]="'/idiots/' + idiot.id + '/edit'" *ngIf="!idiot.discardedAt">
+    Edit
   </a>
 </div>

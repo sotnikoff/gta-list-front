@@ -18,6 +18,7 @@ export class Idiot {
   freezePlayer: boolean;
   blame: boolean;
   explode: boolean;
+  discardedAt: string;
   createdAt: string;
   updatedAt: string;
 

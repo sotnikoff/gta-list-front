@@ -9,14 +9,34 @@
 <table class="table" *ngIf="idiots.length > 0 && !loading">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>R* ID</th>
+      <th sortable="name" (click)="sort('name')">
+        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'name' && filter.direction === 'asc'">
+        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'name' && filter.direction === 'desc'">
+        Name
+      </th>
+      <th sortable="rStarId" (click)="sort('rStarId')">
+        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'rStarId' && filter.direction === 'asc'">
+        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'rStarId' && filter.direction === 'desc'">
+        R* ID
+      </th>
+      <th sortable="momJoke" (click)="sort('momJoke')">
+        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'momJoke' && filter.direction === 'asc'">
+        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'momJoke' && filter.direction === 'desc'">
+        MomJoke
+      </th>
+      <th sortable="cheats" (click)="sort('cheats')">
+        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'cheats' && filter.direction === 'asc'">
+        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'cheats' && filter.direction === 'desc'">
+        Cheats
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let idiot of idiots" (click)="openIdiot(idiot)">
+    <tr *ngFor="let idiot of idiots" (click)="openIdiot(idiot)" [ngClass]="{'text-muted': idiot.discardedAt}">
       <td>{{ idiot.name }}</td>
       <td>{{ idiot.rStarId }}</td>
+      <td>{{ idiot.momJoke }}</td>
+      <td>{{ idiot.cheats }}</td>
     </tr>
   </tbody>
 </table>

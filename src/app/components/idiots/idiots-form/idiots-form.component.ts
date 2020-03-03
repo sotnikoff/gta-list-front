@@ -43,6 +43,10 @@ export class IdiotsFormComponent implements OnInit {
     if (!this.idiotForm.valid) {
       return;
     }
+    const sound = new Audio();
+    sound.src = "assets/sounds/cat1.mp3";
+    sound.load();
+    sound.play();
 
     const savedIdiot = new Idiot().fromJson(Object.assign({ id: this.idiot.id }, this.idiotForm.getRawValue()));
     this.idiotService.save(savedIdiot).subscribe(r => {

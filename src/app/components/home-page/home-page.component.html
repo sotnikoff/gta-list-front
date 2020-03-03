@@ -1,0 +1,64 @@
+
+
+
+<div id="header" class="row justify-content-md-center">
+  <div class="col-md-2">
+    <img class="img-fluid" src="assets/icon.png">
+  </div>
+  <div class="col-md-6">
+    <h1><b>Anuspatron Getracht!</b></h1>
+    <p>Sekte raziyebieren pookan podgoraitung</p> 
+  </div>
+</div>
+
+
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a href="#" class="btn btn-outline-dark">Главная</a>
+      <a href="#" class="btn btn-outline-dark">Добавить</a>
+      <a href="#" class="btn btn-outline-dark">Профили</a>
+      <a href="#" class="btn btn-outline-dark">Группа ВК</a>
+      <a href="#" class="btn btn-outline-dark">Скрипт синхронизации</a>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <th>Никнейм</th>
+          <th>R* ID</th>
+          <th>Mamkenschutken</th>
+          <th>Читерастость</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let idiot of idiots">
+          <td (click)="onRowClick(idiot)">
+            {{ idiot.name }}
+            <span *ngIf="idiot.autoKick" class="badge badge-danger">AutoKick</span>
+            <span *ngIf="idiot.cheats === 'cheats_some'" class="badge badge-warning">cheat</span>
+            <span *ngIf="idiot.cheats === 'cheats_impulse'" class="badge badge-warning" style="background-color: blueviolet; color:white">IMP</span>
+            <span *ngIf="idiot.agressive && !idiot.vip" class="badge badge-success">AGR</span>
+            <span *ngIf="idiot.vip" class="badge badge-success" style="background-color: goldenrod;">VIP</span>
+          </td>
+          <td (click)="onRowClick(idiot)">
+            {{ idiot.rStarId }}</td>
+          <td (click)="onRowClick(idiot)">
+            {{ idiot.momJoke }}</td>
+          <td (click)="onRowClick(idiot)">
+            {{ idiot.cheats }}</td>
+          <td>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

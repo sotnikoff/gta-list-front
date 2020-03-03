@@ -11,7 +11,7 @@ export class Idiot {
   comment: string;
   agressive: boolean;
   momJoke: string;
-  cheats: boolean;
+  cheats: string;
   autoKick: boolean;
   imported: boolean;
   warnMe: boolean;
@@ -47,5 +47,10 @@ export class Idiot {
 
   get deathDateFormatted(): string {
     return this.deathDate ? moment(this.deathDate).format('DD.MM.YYYY HH:mm:ss') : null;
+  }
+
+  get vip(): boolean {
+    return (this.momJoke === 'mj_often' || this.momJoke === 'mj_very_often') && this.agressive;
+
   }
 }

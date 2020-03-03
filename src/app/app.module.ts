@@ -14,6 +14,7 @@ import { IdiotsFormComponent } from './components/idiots/idiots-form/idiots-form
 import { IdiotsShowComponent } from './components/idiots/idiots-show/idiots-show.component';
 import { IdiotsEditComponent } from './components/idiots/idiots-edit/idiots-edit.component';
 import { IdiotsNewComponent } from './components/idiots/idiots-new/idiots-new.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,7 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
     IdiotsFormComponent,
     IdiotsShowComponent,
     IdiotsEditComponent,
-    IdiotsNewComponent
+    IdiotsNewComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import "bootstrap/dist/css/bootstrap.css"
 // body
 //   background-color: #6c757d
+
+@import 'reset.scss'
+
+@font-face
+  font-family: "Amador"
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.eot")
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.eot?#iefix") format("embedded-opentype")
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.woff2") format("woff2")
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.woff") format("woff")
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.ttf") format("truetype")
+  src: url("/assets/fonts/amador/8f607f19b4004cfec70beff9acca54af.svg#Amador W01 Regular") format("svg")
+
+body
+  background: url('/assets/cat_bg.jpg')
+.main-wrapper
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+html, body, app-sign-in, app-root
+  height: 100%

@@ -5,6 +5,7 @@ import { IdiotsShowComponent } from './components/idiots/idiots-show/idiots-show
 import { IdiotsEditComponent } from './components/idiots/idiots-edit/idiots-edit.component';
 import { IdiotsNewComponent } from './components/idiots/idiots-new/idiots-new.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'idiots/new', component: IdiotsNewComponent },
   { path: 'idiots/:id', component: IdiotsShowComponent },
   { path: 'idiots/:id/edit', component: IdiotsEditComponent },
+  { path: 'auth/sign_in', component: SignInComponent },
 ];
 
 @NgModule({

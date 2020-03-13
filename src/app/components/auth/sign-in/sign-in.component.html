@@ -1,5 +1,13 @@
+
 <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
-  <input required='true' formControlName="nickname" type='text'>
-  <input formControlName="password" required='true' type='password'>
-  <button type="submit">Login</button>
+  <div class="form-group">
+    <label for="nickname">Nagibatelname</label>
+    <input type="text" class="form-control" id="nickname" placeholder="Wstawiere Nagibatelname" formControlName="nickname">
+    <small id="emailHelp" class="form-text text-muted">Wstawieren Sie bitte ein Nagibatelname um Idioten zu woslübieren</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Passwordung</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" required="true">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

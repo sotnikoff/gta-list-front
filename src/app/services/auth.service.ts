@@ -16,10 +16,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public signIn(email: string, password: string): Observable<any> {
+  public signIn(nickname: string, password: string): Observable<any> {
     return this.http.post(this.url, {
       password,
-      email
+      nickname
     }, { observe: 'response' }).pipe(
       tap(r => {
         this.setData(r);

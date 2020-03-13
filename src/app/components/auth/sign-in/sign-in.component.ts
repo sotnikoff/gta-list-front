@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  authForm: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  onSubmit(): void {
+    if (!this.authForm.valid) {
+      return;
+    }
+
+    this.authService.signIn(
+      this.authForm.controls.nickname.value,
+      this.authForm.controls.password.value
+    ).subscribe(r => {
+      this.router.navigateByUrl('/idiots');
+    });
+  }
+
+  buildForm(): void {
+    this.authForm = this.formBuilder.group({
+      nickname: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
 }

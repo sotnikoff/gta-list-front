@@ -4,13 +4,24 @@ import { IdiotsIndexComponent } from './components/idiots/idiots-index/idiots-in
 import { IdiotsShowComponent } from './components/idiots/idiots-show/idiots-show.component';
 import { IdiotsEditComponent } from './components/idiots/idiots-edit/idiots-edit.component';
 import { IdiotsNewComponent } from './components/idiots/idiots-new/idiots-new.component';
+import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { NotAuthenticatedGuard } from './utility/not-authenticated.guard';
+import { AuthenticatedGuard } from './utility/authenticated.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: IdiotsIndexComponent },
-  { path: 'idiots', component: IdiotsIndexComponent },
-  { path: 'idiots/new', component: IdiotsNewComponent },
-  { path: 'idiots/:id', component: IdiotsShowComponent },
-  { path: 'idiots/:id/edit', component: IdiotsEditComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthenticatedGuard] },
+  {
+    path: 'idiots',
+    canActivateChild: [AuthenticatedGuard],
+    children: [
+      { path: '', component: IdiotsIndexComponent },
+      { path: 'new', component: IdiotsNewComponent },
+      { path: ':id', component: IdiotsShowComponent },
+      { path: ':id/edit', component: IdiotsEditComponent }
+    ]
+  },
+  { path: 'sign_in', component: SignInComponent, canActivate: [NotAuthenticatedGuard] }
 ];
 
 @NgModule({

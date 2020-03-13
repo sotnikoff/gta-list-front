@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IdiotService } from 'src/app/services/idiot.service';
-import { Idiot } from 'src/app/models/idiot.model';
+import { Idiot } from 'src/app/models/idiot';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';

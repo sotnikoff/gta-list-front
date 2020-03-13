@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IdiotService } from 'src/app/services/idiot.service';
 import { switchMap, takeUntil } from 'rxjs/operators';
-import { Idiot } from 'src/app/models/idiot.model';
+import { Idiot } from 'src/app/models/idiot';
 import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 

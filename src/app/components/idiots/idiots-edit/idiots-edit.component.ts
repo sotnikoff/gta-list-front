@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { Idiot } from 'src/app/models/idiot.model';
+import { Idiot } from 'src/app/models/idiot';
 
 @Component({
   selector: 'app-idiots-edit',

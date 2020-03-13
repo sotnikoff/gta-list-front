@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Idiot } from 'src/app/models/idiot.model';
+import { Idiot } from 'src/app/models/idiot';
 
 @Component({
   selector: 'app-idiots-new',

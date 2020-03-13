@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IdiotService } from 'src/app/services/idiot.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Idiot } from 'src/app/models/idiot.model';
+import { Idiot } from 'src/app/models/idiot';
 
 @Component({
   selector: 'app-idiots-form',

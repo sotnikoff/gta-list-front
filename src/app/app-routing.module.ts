@@ -8,6 +8,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { NotAuthenticatedGuard } from './utility/not-authenticated.guard';
 import { AuthenticatedGuard } from './utility/authenticated.guard';
 import { HomeComponent } from './components/home/home.component';
+import { LogOutComponent } from './components/auth/log-out/log-out.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthenticatedGuard] },
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: ':id/edit', component: IdiotsEditComponent }
     ]
   },
-  { path: 'sign_in', component: SignInComponent, canActivate: [NotAuthenticatedGuard] }
+  { path: 'sign_in', component: SignInComponent, canActivate: [NotAuthenticatedGuard] },
+  { path: 'sign_out', component: LogOutComponent, canActivate: [AuthenticatedGuard] }
 ];
 
 @NgModule({

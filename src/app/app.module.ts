@@ -17,6 +17,8 @@ import { IdiotsNewComponent } from './components/idiots/idiots-new/idiots-new.co
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './utility/auth.interceptor';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { LogOutComponent } from './components/auth/log-out/log-out.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +33,9 @@ export function createTranslateLoader(http: HttpClient) {
     IdiotsEditComponent,
     IdiotsNewComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    TopNavbarComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-icons": "^1.0.0-alpha2",
     "camelcase": "^5.3.1",
-    "decamelize": "^4.0.0",
+    "decamelize": "^3.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "rxjs": "~6.4.0",

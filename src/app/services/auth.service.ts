@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,8 +13,11 @@ export class AuthService {
   private readonly url = `${environment.baseUrl}/auth`;
 
   private user: User;
+  private subject$$: ReplaySubject<User>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.subject$$ = new ReplaySubject(1);
+  }
 
   public signIn(nickname: string, password: string): Observable<any> {
     return this.http.post(this.url, {
@@ -53,6 +56,15 @@ export class AuthService {
     );
   }
 
+  public signOut() {
+    return this.http.delete(this.url)
+      .pipe(
+        tap(r => {
+          this.removeData();
+        })
+      );
+  }
+
   private validate(): Observable<User> {
     return this.http.get(this.url)
       .pipe(
@@ -69,15 +81,6 @@ export class AuthService {
       return true;
     }
     return (parseInt(expiredAt, 0) * 1000) < + new Date();
-  }
-
-  public signOut() {
-    return this.http.delete(this.url)
-      .pipe(
-        tap(r => {
-          this.removeData();
-        })
-      );
   }
 
   private removeData(): void {

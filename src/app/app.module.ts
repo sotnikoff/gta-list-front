@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './utility/auth.interceptor';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { LogOutComponent } from './components/auth/log-out/log-out.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,6 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    MDBBootstrapModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { tap, map, catchError } from 'rxjs/operators';
+import { tap, map, catchError, switchMap, multicast, observeOn } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, ReplaySubject, Subject, ConnectableObservable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,8 +13,11 @@ export class AuthService {
   private readonly url = `${environment.baseUrl}/auth`;
 
   private user: User;
+  private subject$$: ReplaySubject<User>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.subject$$ = new ReplaySubject(1);
+  }
 
   public signIn(nickname: string, password: string): Observable<any> {
     return this.http.post(this.url, {
@@ -42,6 +45,21 @@ export class AuthService {
     }
 
     return this.validate();
+
+    // const observable = of(1).pipe(
+    //   switchMap(r => {
+    //     if (!r) {
+    //       return of(r);
+    //     }
+    //     return this.validate();
+    //   }),
+    //   multicast(new Subject()),
+    //   tap(r => {
+    //     observable.connect();
+    //   })
+    // ) as ConnectableObservable<any>;
+
+    // return observable;
   }
 
   public isLoggedIn(): Observable<boolean> {
@@ -51,6 +69,15 @@ export class AuthService {
       }),
       map(r => r ? true : false)
     );
+  }
+
+  public signOut() {
+    return this.http.delete(this.url)
+      .pipe(
+        tap(r => {
+          this.removeData();
+        })
+      );
   }
 
   private validate(): Observable<User> {
@@ -69,15 +96,6 @@ export class AuthService {
       return true;
     }
     return (parseInt(expiredAt, 0) * 1000) < + new Date();
-  }
-
-  public signOut() {
-    return this.http.delete(this.url)
-      .pipe(
-        tap(r => {
-          this.removeData();
-        })
-      );
   }
 
   private removeData(): void {

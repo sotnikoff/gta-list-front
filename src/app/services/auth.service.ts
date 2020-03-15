@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { tap, map, catchError } from 'rxjs/operators';
+import { tap, map, catchError, switchMap, multicast, observeOn } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Observable, of, throwError, ReplaySubject } from 'rxjs';
+import { Observable, of, throwError, ReplaySubject, Subject, ConnectableObservable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -45,6 +45,21 @@ export class AuthService {
     }
 
     return this.validate();
+
+    // const observable = of(1).pipe(
+    //   switchMap(r => {
+    //     if (!r) {
+    //       return of(r);
+    //     }
+    //     return this.validate();
+    //   }),
+    //   multicast(new Subject()),
+    //   tap(r => {
+    //     observable.connect();
+    //   })
+    // ) as ConnectableObservable<any>;
+
+    // return observable;
   }
 
   public isLoggedIn(): Observable<boolean> {

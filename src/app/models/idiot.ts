@@ -19,6 +19,8 @@ export class Idiot {
   blame: boolean;
   explode: boolean;
   discardedAt: string;
+  ip: string;
+  streamer: boolean;
   createdAt: string;
   updatedAt: string;
 

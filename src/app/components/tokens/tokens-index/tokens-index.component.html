@@ -1,1 +1,30 @@
-<p>tokens-index works!</p>
+<div *ngIf="tokens.length > 0">
+  <p>
+    <button type="button" mdbBtn color="success" mdbWavesEffect [disabled]="creatingToken" (click)="createToken()">
+      <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create new token
+    </button>
+  </p>
+
+  <mdb-card *ngFor="let token of tokens">
+    <mdb-card-body>
+      <mdb-card-title>
+        <h4>Token</h4>
+      </mdb-card-title>
+      <mdb-card-text>
+        {{ token.token }}
+      </mdb-card-text>
+      <mdb-card-text>
+        <mdb-icon class="copy-icon" size="2x" far icon="copy" ngxClipboard [cbContent]="token.token" (cbOnSuccess)="token.copied = true"></mdb-icon>
+        {{ token.copied ? 'Copied' : '' }}
+      </mdb-card-text>
+      <mdb-card-text>
+        Created at: {{ token.createdAtFormatted }}, expired at: {{ token.expiredAtFormatted }}
+      </mdb-card-text>
+      <mdb-card-text>
+        <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deleteToken(token)">
+          <mdb-icon class="copy-icon" size="1x" fas icon="trash"></mdb-icon>
+        </button>
+      </mdb-card-text>
+    </mdb-card-body>
+  </mdb-card>
+</div>

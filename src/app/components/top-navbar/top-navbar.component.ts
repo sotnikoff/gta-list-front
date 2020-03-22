@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
-import { map, tap, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-top-navbar',
@@ -16,7 +14,6 @@ export class TopNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.auth.currentUser().subscribe(r => {
-      console.log('fired', r);
       this.user = r;
     }, e => {
       console.log('error', e);

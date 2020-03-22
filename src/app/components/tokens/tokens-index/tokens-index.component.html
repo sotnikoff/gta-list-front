@@ -1,10 +1,12 @@
-<div *ngIf="tokens.length > 0">
-  <p>
-    <button type="button" mdbBtn color="success" mdbWavesEffect [disabled]="creatingToken" (click)="createToken()">
-      <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create new token
-    </button>
-  </p>
+<h1>Tokens</h1>
 
+<p>
+  <button type="button" mdbBtn color="success" mdbWavesEffect [disabled]="creatingToken" (click)="createToken()">
+    <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create new token
+  </button>
+</p>
+
+<div *ngIf="tokens.length > 0">
   <mdb-card *ngFor="let token of tokens">
     <mdb-card-body>
       <mdb-card-title>

@@ -7,6 +7,12 @@
 </div>
 
 <p>
+  <mdb-checkbox [checked]="filter.drafts" [default]="true" (change)="draftsOnChange($event)">
+    Drafts
+  </mdb-checkbox>
+</p>
+
+<p>
   <a class="btn btn-success" role="button" routerLink='/idiots/new'>
     Create Idiot
   </a>
@@ -15,24 +21,16 @@
 <table class="table" *ngIf="idiots.length > 0 && !loading">
   <thead>
     <tr>
-      <th sortable="name" (click)="sort('name')">
-        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'name' && filter.direction === 'asc'">
-        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'name' && filter.direction === 'desc'">
+      <th>
         Name
       </th>
-      <th sortable="rStarId" (click)="sort('rStarId')">
-        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'rStarId' && filter.direction === 'asc'">
-        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'rStarId' && filter.direction === 'desc'">
+      <th>
         R* ID
       </th>
-      <th sortable="momJoke" (click)="sort('momJoke')">
-        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'momJoke' && filter.direction === 'asc'">
-        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'momJoke' && filter.direction === 'desc'">
+      <th>
         MomJoke
       </th>
-      <th sortable="cheats" (click)="sort('cheats')">
-        <img src="/assets/icons/arrow-up.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'cheats' && filter.direction === 'asc'">
-        <img src="/assets/icons/arrow-down.svg" alt="" width="20" height="20" *ngIf="filter.attribute === 'cheats' && filter.direction === 'desc'">
+      <th>
         Cheats
       </th>
     </tr>
@@ -41,8 +39,12 @@
     <tr *ngFor="let idiot of idiots" (click)="openIdiot(idiot)" [ngClass]="{'text-muted': idiot.discardedAt}">
       <td>{{ idiot.name }}</td>
       <td>{{ idiot.rStarId }}</td>
-      <td>{{ idiot.momJoke }}</td>
+      <td>{{ idiot.momJoke }} ({{ idiot.momJokeRatio }})</td>
       <td>{{ idiot.cheats }}</td>
     </tr>
   </tbody>
 </table>
+
+<div *ngIf="idiots.length === 0 && !loading">
+  The idiot list is empty
+</div>

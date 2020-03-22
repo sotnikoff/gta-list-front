@@ -4,6 +4,7 @@ import { Idiot } from 'src/app/models/idiot';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { MdbCheckboxChange } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-idiots-index',
@@ -17,7 +18,8 @@ export class IdiotsIndexComponent implements OnInit {
 
   filter = {
     attribute: 'name',
-    direction: 'asc'
+    direction: 'asc',
+    drafts: false
   };
 
   constructor(private idiotService: IdiotService,
@@ -31,35 +33,15 @@ export class IdiotsIndexComponent implements OnInit {
     this.loadRecords();
   }
 
-  sort(attribute: string): void {
-    if (this.filter.attribute === attribute) {
-      if (this.filter.direction === 'asc') {
-        this.filter.direction = 'desc';
-      } else {
-        this.filter.direction = 'asc';
-      }
-    } else {
-      this.filter.direction = 'asc';
-      this.filter.attribute = attribute;
-    }
-
-    this.performSort();
-  }
-
-  performSort(): void {
-    const idiots: Idiot[] = _.sortBy(this.idiots, o => o[this.filter.attribute]);
-    if (this.filter.direction === 'asc') {
-      this.idiots = idiots;
-    } else {
-      this.idiots = idiots.reverse();
-    }
+  draftsOnChange(event: MdbCheckboxChange) {
+    this.filter.drafts = event.checked;
+    this.loadRecords();
   }
 
   loadRecords(): void {
     this.loading = true;
-    this.idiotService.index().subscribe(r => {
+    this.idiotService.index(this.filter).subscribe(r => {
       this.idiots = r;
-      this.performSort();
       this.loading = false;
     });
   }

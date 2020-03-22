@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Idiot } from '../models/idiot';
@@ -14,8 +14,9 @@ export class IdiotService {
 
   constructor(private http: HttpClient) { }
 
-  index(): Observable<Idiot[]> {
-    return this.http.get(this.url, { observe: 'response' }).pipe(
+  index(filter): Observable<Idiot[]> {
+    const params = new HttpParams().set('drafts', `${filter.drafts}`);
+    return this.http.get(this.url, { observe: 'response', params }).pipe(
       map(r => {
         return (r as any).body.map(rr => new Idiot().fromJson(rr));
       })

@@ -17,8 +17,11 @@ export class Idiot {
   warnMe: boolean;
   freezePlayer: boolean;
   blame: boolean;
+  momJokeRatio: number;
   explode: boolean;
   discardedAt: string;
+  ip: string;
+  streamer: boolean;
   createdAt: string;
   updatedAt: string;
 

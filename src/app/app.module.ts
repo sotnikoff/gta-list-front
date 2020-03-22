@@ -20,6 +20,7 @@ import { AuthInterceptor } from './utility/auth.interceptor';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { LogOutComponent } from './components/auth/log-out/log-out.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TokensIndexComponent } from './components/tokens/tokens-index/tokens-index.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,7 +37,8 @@ export function createTranslateLoader(http: HttpClient) {
     SignInComponent,
     HomeComponent,
     TopNavbarComponent,
-    LogOutComponent
+    LogOutComponent,
+    TokensIndexComponent
   ],
   imports: [
     BrowserModule,

@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
       this.authForm.controls.nickname.value,
       this.authForm.controls.password.value
     ).subscribe(r => {
-      this.router.navigateByUrl('/idiots');
+      this.router.navigateByUrl('/');
     });
   }
 

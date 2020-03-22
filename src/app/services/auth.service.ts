@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap, map, catchError, switchMap, multicast, observeOn } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Observable, of, throwError, ReplaySubject, Subject, ConnectableObservable } from 'rxjs';
+import { Observable, of, throwError, ReplaySubject, Subject, ConnectableObservable, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,11 +13,9 @@ export class AuthService {
   private readonly url = `${environment.baseUrl}/auth`;
 
   private user: User;
-  private subject$$: ReplaySubject<User>;
+  private subject$$ = new BehaviorSubject<User>(this.user);
 
-  constructor(private http: HttpClient) {
-    this.subject$$ = new ReplaySubject(1);
-  }
+  constructor(private http: HttpClient) {}
 
   public signIn(nickname: string, password: string): Observable<any> {
     return this.http.post(this.url, {
@@ -26,40 +24,33 @@ export class AuthService {
     }, { observe: 'response' }).pipe(
       tap(r => {
         this.setData(r);
+        this.subject$$.next(this.user);
       }),
       map(r => new User().fromJson(r.body))
     );
   }
 
   public currentUser(): Observable<User> {
-    if (!localStorage.getItem('accessToken')) {
-      return throwError('bad_auth');
-    }
-
-    if (this.isTokenExpired()) {
-      return throwError('token_expired');
-    }
-
-    if (this.user) {
-      return of(this.user);
-    }
-
-    return this.validate();
-
-    // const observable = of(1).pipe(
-    //   switchMap(r => {
-    //     if (!r) {
-    //       return of(r);
-    //     }
-    //     return this.validate();
-    //   }),
-    //   multicast(new Subject()),
-    //   tap(r => {
-    //     observable.connect();
-    //   })
-    // ) as ConnectableObservable<any>;
-
-    // return observable;
+    return (this.subject$$.pipe(
+      map(r => {
+        if (!localStorage.getItem('accessToken')) {
+          return 'no_auth';
+        }
+        if (this.isTokenExpired()) {
+          return 'token_expired';
+        }
+        return r;
+      }),
+      switchMap(r => {
+        if (r === 'no_auth' || r === 'token_expired') {
+          return of(null);
+        }
+        if (r) {
+          return of(r);
+        }
+        return this.validate();
+      })
+    ) as BehaviorSubject<User>).asObservable();
   }
 
   public isLoggedIn(): Observable<boolean> {
@@ -76,6 +67,7 @@ export class AuthService {
       .pipe(
         tap(r => {
           this.removeData();
+          this.subject$$.next(this.user);
         })
       );
   }

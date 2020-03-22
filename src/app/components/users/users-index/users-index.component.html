@@ -1,0 +1,36 @@
+<h1>Users</h1>
+
+<div *ngIf="loading">
+  <p>
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+  </p>
+</div>
+
+<p>
+  <button type="button" mdbBtn color="success" mdbWavesEffect [disabled]="false" routerLink="/user_invite">
+    <mdb-icon class="copy-icon" size="1x" fas icon="user-plus"></mdb-icon> Invite user
+  </button>
+</p>
+
+<table class="table" *ngIf="users.length > 0 && !loading">
+  <thead>
+    <tr>
+      <th>
+        Nickname
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Invited by
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nickname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.invitedBy }}</td>
+    </tr>
+  </tbody>
+</table>

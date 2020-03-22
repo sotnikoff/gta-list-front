@@ -7,6 +7,9 @@ export class User {
   id: number;
   password: string;
   passwordConfirmation: string;
+  invitedBy: number;
+  email: string;
+  token: string;
 
   fromJson(data): User {
     Object.keys(data).forEach(k => {

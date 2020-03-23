@@ -54,7 +54,7 @@ export class UsersProceedComponent implements OnInit {
 
     const savedUser = new User().fromJson(Object.assign({}, this.form.getRawValue()));
     this.userService.proceed(savedUser).subscribe(r => {
-       // this.router.navigateByUrl('/sign_in');
+       this.router.navigateByUrl('/sign_in');
     });
   }
 

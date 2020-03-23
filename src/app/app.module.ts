@@ -22,6 +22,9 @@ import { LogOutComponent } from './components/auth/log-out/log-out.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TokensIndexComponent } from './components/tokens/tokens-index/tokens-index.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { UsersIndexComponent } from './components/users/users-index/users-index.component';
+import { UsersInviteComponent } from './components/users/users-invite/users-invite.component';
+import { UsersProceedComponent } from './components/users/users-proceed/users-proceed.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,7 +42,10 @@ export function createTranslateLoader(http: HttpClient) {
     HomeComponent,
     TopNavbarComponent,
     LogOutComponent,
-    TokensIndexComponent
+    TokensIndexComponent,
+    UsersIndexComponent,
+    UsersInviteComponent,
+    UsersProceedComponent
   ],
   imports: [
     BrowserModule,

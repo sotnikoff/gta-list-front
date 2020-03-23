@@ -1,0 +1,45 @@
+<h1>User confirmation</h1>
+
+<div *ngIf="loading">
+  <p>
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+  </p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="save()" *ngIf="user && !loading">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input type="text" class="form-control" id="nickname" formControlName="nickname">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="password-confirmation">Password confirmation</label>
+        <input type="password" class="form-control" id="password-confirmation" formControlName="passwordConfirmation">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" mdbBtn color="success" mdbWavesEffect type="submit">
+        <mdb-icon class="copy-icon" size="1x" far icon="save"></mdb-icon> Confirm
+      </button>
+    </div>
+  </div>
+</form>

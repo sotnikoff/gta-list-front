@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap, map, catchError, switchMap, multicast, observeOn } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Observable, of, throwError, ReplaySubject, Subject, ConnectableObservable, BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({

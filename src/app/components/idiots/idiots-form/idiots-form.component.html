@@ -21,6 +21,14 @@
   </div>
 
   <div class="row">
+    <div class="col-md-6">
+      <label for="ip">IP</label>
+      <input type="text" class="form-control" id="ip" formControlName="ip">
+      <small id="ipHelp" class="form-text text-muted">This field may be changed automatically during a background process</small>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col">
       <div class="form-group">
         <label for="momJoke">momJoke</label>
@@ -92,5 +100,5 @@
 
   <br>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" mdbBtn color="success" role="button" mdbWavesEffect>Submit</button>
 </form>

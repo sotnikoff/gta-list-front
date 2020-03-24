@@ -33,6 +33,7 @@ export class IdiotsFormComponent implements OnInit {
       rStarId: [this.idiot.rStarId, Validators.required],
       cheats: [this.idiot.cheats],
       warnMe: [this.idiot.warnMe],
+      ip: [this.idiot.ip],
       streamer: [this.idiot.streamer],
       freezePlayer: [this.idiot.freezePlayer],
       blame: [this.idiot.blame],

@@ -11,7 +11,7 @@ export class Idiot {
   comment: string;
   agressive: boolean;
   momJoke: string;
-  cheats: boolean;
+  cheats: string;
   autoKick: boolean;
   imported: boolean;
   warnMe: boolean;
@@ -22,6 +22,12 @@ export class Idiot {
   discardedAt: string;
   ip: string;
   streamer: boolean;
+  city: string;
+  country: string;
+  region: string;
+  latitude: number;
+  longitude: number;
+
   createdAt: string;
   updatedAt: string;
 

@@ -50,4 +50,30 @@ export class IdiotsShowComponent implements OnInit, OnDestroy {
     this.destroySubject$$.complete();
   }
 
+  get location(): string {
+    const arr = [];
+
+    if (this.idiot.country) {
+      arr.push(this.idiot.country);
+    }
+
+    if (this.idiot.region) {
+      arr.push(this.idiot.region);
+    }
+
+    if (this.idiot.city) {
+      arr.push(this.idiot.city);
+    }
+
+    if (this.idiot.latitude) {
+      arr.push(`lat: ${this.idiot.latitude}`);
+    }
+
+    if (this.idiot.longitude) {
+      arr.push(`lon: ${this.idiot.longitude}`);
+    }
+
+    return arr.join(', ');
+  }
+
 }

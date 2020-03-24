@@ -7,7 +7,31 @@
 <div *ngIf="idiot">
   <h1>{{ idiot.name }}</h1>
 
-  <table class="table" [ngClass]="{'text-muted': idiot.discardedAt}">
+  <div class="row margin-30">
+    <div class="col">
+      <button type="button" mdbBtn gradient="aqua" rounded="true" mdbWavesEffect routerLink='/idiots'>
+        <mdb-icon class="copy-icon" size="1x" fas icon="caret-left"></mdb-icon> Back
+      </button>
+
+      <button type="button" mdbBtn gradient="purple" rounded="true" mdbWavesEffect [routerLink]="'/idiots/' + idiot.id + '/edit'" *ngIf="!idiot.discardedAt">
+        <mdb-icon class="copy-icon" size="1x" fas icon="user-edit"></mdb-icon> Edit
+      </button>
+
+      <button type="button" mdbBtn gradient="peach" rounded="true" mdbWavesEffect (click)="destroy()" *ngIf="!idiot.discardedAt">
+        <mdb-icon class="copy-icon" size="1x" fas icon="user-times"></mdb-icon> Delete
+      </button>
+
+      <button type="button" mdbBtn class="btn aqua-gradient" rounded="true" mdbWavesEffect (click)="restore()" *ngIf="idiot.discardedAt">
+        Restore
+      </button>
+
+      <button type="button" mdbBtn class="btn blue-gradient" rounded="true" mdbWavesEffect *ngIf="!idiot.discardedAt">
+        <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create profile
+      </button>
+    </div>
+  </div>
+
+  <table class="table margin-30" [ngClass]="{'text-muted': idiot.discardedAt}">
     <tbody>
       <tr>
         <td>name</td>
@@ -35,6 +59,16 @@
       <tr>
         <td>comment</td>
         <td>{{ idiot.comment }}</td>
+      </tr>
+
+      <tr>
+        <td>location</td>
+        <td>{{ location }}</td>
+      </tr>
+
+      <tr>
+        <td>ip</td>
+        <td>{{ idiot.ip }}</td>
       </tr>
 
       <tr>
@@ -78,7 +112,9 @@
     </tbody>
   </table>
 
-  <a class="btn btn-primary" role="button" routerLink='/'>
+  
+
+  <!-- <a class="btn btn-primary" role="button" routerLink='/'>
     Back
   </a>
 
@@ -92,5 +128,7 @@
 
   <button class="btn btn-primary" role="button" (click)="restore()" *ngIf="idiot.discardedAt">
     Restore
-  </button>
+  </button> -->
+
+  
 </div>

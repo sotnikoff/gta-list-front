@@ -21,7 +21,7 @@ export class UsersIndexComponent implements OnInit {
 
   loadRecords(): void {
     this.loading = true;
-    this.userService.index().subscribe(r => {
+    this.userService.index({}).subscribe(r => {
       this.users = r;
       this.loading = false;
     });

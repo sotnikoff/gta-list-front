@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class UsersService {
   private readonly url = `${environment.baseUrl}`;
   constructor(private http: HttpClient) { }
 
-  index(): Observable<User[]> {
-    return this.http.get(`${this.url}/users`).pipe(
+  index(filter): Observable<User[]> {
+    return this.http.get(`${this.url}/users`, { params: _.pickBy(filter, _.identity) }).pipe(
       map(r => (r as any).map(rr => new User().fromJson(rr)))
     );
   }

@@ -5,6 +5,8 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 import { Idiot } from 'src/app/models/idiot';
 import { Subject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-idiots-show',
@@ -15,15 +17,21 @@ export class IdiotsShowComponent implements OnInit, OnDestroy {
 
   idiot: Idiot;
   destroySubject$$: Subject<any>;
+  user: User;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private auth: AuthService,
               private titleService: Title,
               private service: IdiotService) {
                 this.destroySubject$$ = new Subject<any>();
               }
 
   ngOnInit(): void {
+    this.auth.currentUser().subscribe(r => {
+      this.user = r;
+    });
+
     this.route.params.pipe(
       switchMap(r => this.service.show(r.id)),
       takeUntil(this.destroySubject$$)

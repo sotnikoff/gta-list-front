@@ -1,0 +1,44 @@
+<h1>Messages</h1>
+
+<div class="row" id="filters">
+  <div class="col">
+    <select class="browser-default custom-select" (change)="onIdiotChange($event)" *ngIf="idiots.length > 0">
+      <option [value]="null">
+        All
+      </option>
+      <option [value]="idiot.id" *ngFor="let idiot of idiots" [selected]="filter.idiot_id == idiot.id">
+        {{ idiot.name }} ({{ idiot.momJokeRatio }})
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <select class="browser-default custom-select" (change)="onUserChange($event)" *ngIf="users.length > 0">
+      <option [value]="user.id" *ngFor="let user of users" [selected]="filter.user_id == user.id">
+        {{ user.nickname }} 
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <button type="button" mdbBtn gradient="aqua" rounded="true" mdbWavesEffect (click)="loadRecords()">
+      <mdb-icon class="copy-icon" size="1x" fas icon="caret-left"></mdb-icon> Load messages
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ul class="list-group" *ngIf="messages.length > 0">
+      <li class="list-group-item" *ngFor="let message of messages">
+        <a [routerLink]="'/idiots/' + message.idiotId">[{{ foundIdiot(message.idiotId).name }}]</a> {{ message.message }}
+      </li>
+    </ul>
+    
+    <mdb-card *ngIf="messages.length === 0">
+      <mdb-card-body>
+        <mdb-card-title>
+          <h6>No messages</h6>
+        </mdb-card-title>
+      </mdb-card-body>
+    </mdb-card>    
+  </div>
+</div>

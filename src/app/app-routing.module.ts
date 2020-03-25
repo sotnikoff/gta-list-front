@@ -13,6 +13,7 @@ import { TokensIndexComponent } from './components/tokens/tokens-index/tokens-in
 import { UsersIndexComponent } from './components/users/users-index/users-index.component';
 import { UsersInviteComponent } from './components/users/users-invite/users-invite.component';
 import { UsersProceedComponent } from './components/users/users-proceed/users-proceed.component';
+import { MessagesIndexComponent } from './components/messages/messages-index/messages-index.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthenticatedGuard] },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'tokens', component: TokensIndexComponent, canActivate: [AuthenticatedGuard] },
   { path: 'users', component: UsersIndexComponent, canActivate: [AuthenticatedGuard] },
   { path: 'user_invite', component: UsersInviteComponent, canActivate: [AuthenticatedGuard] },
-  { path: 'user_activate', component: UsersProceedComponent, canActivate: [NotAuthenticatedGuard] }
+  { path: 'user_activate', component: UsersProceedComponent, canActivate: [NotAuthenticatedGuard] },
+  { path: 'messages', component: MessagesIndexComponent, canActivate: [AuthenticatedGuard] },
 ];
 
 @NgModule({

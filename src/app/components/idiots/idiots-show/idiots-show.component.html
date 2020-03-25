@@ -28,6 +28,12 @@
       <button type="button" mdbBtn class="btn blue-gradient" rounded="true" mdbWavesEffect *ngIf="!idiot.discardedAt">
         <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create profile
       </button>
+
+      <button type="button" mdbBtn class="btn blue-gradient" rounded="true"
+        [routerLink]="'/messages'" [queryParams]="{ idiot_id: idiot.id, user_id: user.id }"
+        mdbWavesEffect *ngIf="!idiot.discardedAt && user">
+          <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> View messages
+      </button>
     </div>
   </div>
 
@@ -110,25 +116,5 @@
         <td>{{ idiot.updatedAtFormatted }}</td>
       </tr>
     </tbody>
-  </table>
-
-  
-
-  <!-- <a class="btn btn-primary" role="button" routerLink='/'>
-    Back
-  </a>
-
-  <a class="btn btn-secondary" role="button" [routerLink]="'/idiots/' + idiot.id + '/edit'" *ngIf="!idiot.discardedAt">
-    Edit
-  </a>
-
-  <button class="btn btn-danger" role="button" (click)="destroy()" *ngIf="!idiot.discardedAt">
-    Delete
-  </button>
-
-  <button class="btn btn-primary" role="button" (click)="restore()" *ngIf="idiot.discardedAt">
-    Restore
-  </button> -->
-
-  
+  </table>  
 </div>

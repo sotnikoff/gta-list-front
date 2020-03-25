@@ -25,6 +25,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { UsersIndexComponent } from './components/users/users-index/users-index.component';
 import { UsersInviteComponent } from './components/users/users-invite/users-invite.component';
 import { UsersProceedComponent } from './components/users/users-proceed/users-proceed.component';
+import { MessagesIndexComponent } from './components/messages/messages-index/messages-index.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     TokensIndexComponent,
     UsersIndexComponent,
     UsersInviteComponent,
-    UsersProceedComponent
+    UsersProceedComponent,
+    MessagesIndexComponent
   ],
   imports: [
     BrowserModule,

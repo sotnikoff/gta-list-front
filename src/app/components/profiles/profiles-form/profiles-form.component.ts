@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { IdiotService } from 'src/app/services/idiot.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profile } from 'src/app/models/profile';
 import { ProfilesService } from 'src/app/services/profiles.service';
@@ -28,7 +27,7 @@ export class ProfilesFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [this.profile.name, Validators.required],
       rStarId: [this.profile.rStarId, Validators.required],
-      fromIdiot: [this.profile.fromIdiot],
+      idiotId: [this.profile.idiotId]
     });
   }
 

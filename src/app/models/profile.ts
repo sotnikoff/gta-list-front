@@ -6,7 +6,7 @@ export class Profile {
   createdBy: number;
   rStarId: number;
   name: string;
-  fromIdiot: boolean;
+  idiotId: number;
 
   createdAt: string;
   updatedAt: string;

@@ -25,7 +25,9 @@
         Restore
       </button>
 
-      <button type="button" mdbBtn class="btn blue-gradient" rounded="true" mdbWavesEffect *ngIf="!idiot.discardedAt">
+      <button type="button" mdbBtn class="btn blue-gradient"
+        rounded="true" mdbWavesEffect *ngIf="!idiot.discardedAt"
+        routerLink="/profiles/new" [queryParams]="{ idiot_id: idiot.id, r_star_id: idiot.rStarId, name: idiot.name }">
         <mdb-icon class="copy-icon" size="1x" fas icon="plus"></mdb-icon> Create profile
       </button>
 

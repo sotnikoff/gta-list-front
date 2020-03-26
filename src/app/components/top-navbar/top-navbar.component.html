@@ -14,8 +14,8 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="user">
         <a class="nav-link waves-light" routerLink="/idiots" mdbWavesEffect>Idiots</a>
       </li>
-      <li class="nav-item" *ngIf="user">
-        <a class="nav-link waves-light" mdbWavesEffect>Profiles</a>
+      <li class="nav-item" *ngIf="user" routerLinkActive="active">
+        <a class="nav-link waves-light" routerLink="/profiles" mdbWavesEffect>Profiles</a>
       </li>
 
       <!-- Dropdown -->

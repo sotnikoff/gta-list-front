@@ -1,0 +1,7 @@
+<div *ngIf="loading">
+  <p>
+    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+  </p>
+</div>
+
+<app-profiles-form [profile]="profile" *ngIf="profile && !loading"></app-profiles-form>

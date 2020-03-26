@@ -26,6 +26,10 @@ import { UsersIndexComponent } from './components/users/users-index/users-index.
 import { UsersInviteComponent } from './components/users/users-invite/users-invite.component';
 import { UsersProceedComponent } from './components/users/users-proceed/users-proceed.component';
 import { MessagesIndexComponent } from './components/messages/messages-index/messages-index.component';
+import { ProfilesIndexComponent } from './components/profiles/profiles-index/profiles-index.component';
+import { ProfilesNewComponent } from './components/profiles/profiles-new/profiles-new.component';
+import { ProfilesEditComponent } from './components/profiles/profiles-edit/profiles-edit.component';
+import { ProfilesFormComponent } from './components/profiles/profiles-form/profiles-form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,7 +51,11 @@ export function createTranslateLoader(http: HttpClient) {
     UsersIndexComponent,
     UsersInviteComponent,
     UsersProceedComponent,
-    MessagesIndexComponent
+    MessagesIndexComponent,
+    ProfilesIndexComponent,
+    ProfilesNewComponent,
+    ProfilesEditComponent,
+    ProfilesFormComponent
   ],
   imports: [
     BrowserModule,

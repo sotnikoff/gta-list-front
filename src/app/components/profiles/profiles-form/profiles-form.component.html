@@ -1,0 +1,26 @@
+<h1>{{ profile.id ? profile.name : 'New' }}</h1>
+
+<br>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="rStarId">rStarId</label>
+        <input type="text" class="form-control" id="rStarId" formControlName="rStarId">
+        <small id="rStarIdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <button type="submit" mdbBtn color="success" role="button" mdbWavesEffect>Submit</button>
+</form>

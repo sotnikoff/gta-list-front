@@ -43,7 +43,7 @@ export class IdiotsShowComponent implements OnInit, OnDestroy {
 
   destroy(): void {
     this.service.delete(this.idiot.id).subscribe(r => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/idiots');
     });
   }
 
